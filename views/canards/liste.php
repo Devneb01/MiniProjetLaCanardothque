@@ -1,5 +1,4 @@
 <h1>Liste des Canards</h1>
-
 <table border="1">
     <thead>
     <tr>
@@ -13,7 +12,13 @@
         <tr>
             <td><?= htmlspecialchars($canard['nom']) ?></td>
             <td><?= htmlspecialchars($canard['type']) ?></td>
-            <td><?= htmlspecialchars($canard['etat']) ?></td>
+            <td>
+                <?= htmlspecialchars($canard['etat']) ?>
+                <?php if ($canard['etat'] === 'Dans la mare'): ?>
+                    <br>
+                    <a href="index.php?page=emprunter&id=<?= $canard['id_canard'] ?>">[Adopter]</a>
+                <?php endif; ?>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
