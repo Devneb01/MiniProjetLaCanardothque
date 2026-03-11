@@ -1,6 +1,6 @@
 <?php
 function getAllCanards($pdo){
-    $stmt = $pdo->prepare("SELECT*FROM canard");
+    $stmt = $pdo->prepare("SELECT * FROM canard");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
@@ -12,4 +12,10 @@ function addCanard($pdo,$data){
     $stmt->bindParam(':etat', $data['etat']);
     $stmt->execute();
 
+}
+
+function getAvailableCanards($pdo) {
+    $stmt = $pdo->prepare("SELECT * FROM canard WHERE etat = 'Dans la mare'");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
