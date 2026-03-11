@@ -25,3 +25,19 @@ PRIMARY KEY(id_canard,date_pret),
 FOREIGN KEY(id_canard) REFERENCES CANARD(id_canard),
 FOREIGN KEY(num_carte) REFERENCES ETUDIANT(num_carte)
 );
+
+INSERT INTO CANARD (nom, type, etat) VALUES
+('Amiral Bec-Jaune', 'Plastique', 'Dans la mare'),
+('Professeur Quack', 'Peluche', 'Dans la mare'),
+('Bouée', 'Bouée', 'En vadrouille'),
+('Sergent Plume', 'Plastique', 'En nettoyage'),
+('Goldie le Canard d\'Or', 'Plastique', 'Dans la mare');
+
+INSERT INTO ETUDIANT (num_carte, nom, prenom, email) VALUES
+('E2024001', 'Dupont', 'Jean', 'jean.dupont@univ-test.fr'),
+('E2024002', 'Martin', 'Alice', 'alice.martin@univ-test.fr'),
+                                        ('E2024003', 'Lefebvre', 'Thomas', 'thomas.lefebvre@univ-test.fr');
+
+
+INSERT INTO EMPRUNTER (id_canard, num_carte, date_pret, date_retour_prevue) VALUES
+    (3, 'E2024002', CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY));
